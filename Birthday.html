@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message for Sahana</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(145deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        button {
+            margin: 10px;
+            padding: 12px 25px;
+            font-size: 1em;
+            background: linear-gradient(145deg, #ff7eb3, #ff758c);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            box-shadow: 0 5px 10px rgba(255, 117, 140, 0.4);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(255, 117, 140, 0.6);
+        }
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 3px 7px rgba(255, 117, 140, 0.3);
+        }
+        .hidden {
+            display: none;
+        }
+        #page2 button#noButton {
+            position: relative;
+        }
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        #message {
+            font-size: 2em;
+            color: #ff4500;
+            display: none;
+            animation: fade-in 1s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1">
+        <h1>Ekta Kotha Bolbo?</h1>
+        <button onclick="nextPage('page2')">Ha Bolo</button>
+        <button onclick="showMessage('Amar kosto laglo yes e click kor', 'page1')">Naa</button>
+    </div>
+    <div id="page2" class="hidden">
+        <h1>Raat 1 tay amay call korbi?</h1>
+        <button onclick="nextPage('page3')">Yes</button>
+        <button id="noButton" onclick="moveButton()">No</button>
+    </div>
+    <div id="page3" class="hidden">
+        <h1>Thank You Amar Valo Bonu</h1>
+    </div>
+    <script>
+        function nextPage(page) {
+            document.querySelectorAll('div').forEach(div => div.classList.add('hidden'));
+            document.getElementById(page).classList.remove('hidden');
+        }
+
+        function showMessage(message, page) {
+            alert(message);
+            if (page) {
+                nextPage(page);
+            }
+        }
+
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            const x = Math.floor(Math.random() * (window.innerWidth - button.clientWidth));
+            const y = Math.floor(Math.random() * (window.innerHeight - button.clientHeight));
+            button.style.position = 'absolute';
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
